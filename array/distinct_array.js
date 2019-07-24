@@ -1,3 +1,6 @@
+/**
+ * 数组去重性能比较
+ */
 const testArr = (function () {
   const arr = new Array(1000000);
   for (let i = 0; i < arr.length; i += 1) {
