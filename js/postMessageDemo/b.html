@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+<head>
+    <title>post实验</title>
+    <meta charset="utf-8">
+</head>
+
+
+<body>
+    <p id="box" style="width: 100px;height: 100px;background: red;">heiheihei</p>
+</body>
+
+<script type="text/javascript">
+    var box=document.getElementById('box');
+    var color = box.style.backgroundColor;
+    window.addEventListener('message', function(event){
+        //if(event.origin != ''){return;}
+        event.source.postMessage(color,'*');
+    })
+</script>
+
+</html>

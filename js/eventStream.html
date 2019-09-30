@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+
+<body onclick="onclickBody()">
+   <div id="box1" onclick="clickBox1(event)">
+       box1
+     <div id="box2" onclick="clickBox2(event)">
+         box2
+         <div id="box3">
+            box3
+         </div>
+     </div>
+   </div>
+   <!--
+     页面添加事件遵循事件冒泡（Chrome） 2，1， body（DOM0事件处理程序）
+   -->
+   <div>动态添加事件</div>
+   <div id="box4">
+        box4
+      <div id="box5">
+          box5
+          <div id="box6">
+             box6
+          </div>
+      </div>
+    </div>
+</body>
+
+<script>
+    function clickBox1(event) {
+        console.log(1, event)
+    }
+    function clickBox2(event) {
+        // 事件委托利用事件冒泡处理
+        // event.stopPropagation 阻止冒泡行为
+        console.log(2, event, event.stopPropagation);
+        event.stopPropagation();
+    }
+   function onclickBody() {
+    console.log('body');
+   }
+   const box4 = document.getElementById("box4");
+   const box5 = document.getElementById("box5");
+   const box6 = document.getElementById("box6");
+   // 动态添加点击事件（DOM0事件处理程序）
+//    box4.onclick = function () { console.log(4) }
+//    box5.onclick = function () { console.log(5) }
+//    box6.onclick = function () { console.log(6) }
+
+// 添加事件监听（DOM2事件处理程序）
+// 默认冒泡 false ，捕获 true
+// box4.addEventListener('click', (event) => { console.log(event); alert("addEventListener4") }, true )
+// box5.addEventListener('click', () => { console.log("addEventListener5") }, true )
+// box6.addEventListener('click', () => { console.log("addEventListener6") }, true )
+
+box4.addEventListener('click', (event) => { console.log("addEventListener4", event.eventPhase) })
+
+box5.addEventListener('click', (event) => {   //获取当前事件触发的div
+            var target = event.currentTarget;
+
+            //通过判断事件的event.eventPhase属性返回事件传播的当前阶段
+            //1：捕获阶段、2：正常事件派发和3：起泡阶段。
+            //得到当前阶段和id值并输出
+            var msg = (event.eventPhase == 1 ? '捕获阶段：' : '冒泡阶段：')+ target.attributes["id"].value;;
+            console.log(msg, event, 'addEventListener5');
+        }, true)
+box6.addEventListener('click', (event) => { console.log("addEventListener6"); event.stopPropagation(); })        
+ 
+</script>
+
+<style>
+  #box1 {
+    width: 300px;
+    height: 300px;
+    border: 1px solid red;  
+  }  
+  #box2 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;  
+  }  
+  #box3 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid green;  
+  }  
+
+  #box4 {
+    width: 300px;
+    height: 300px;
+    border: 1px solid red;  
+  }  
+  #box5 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;  
+  }  
+  #box6 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid green;  
+  } 
+
+</style>
+
+</html>

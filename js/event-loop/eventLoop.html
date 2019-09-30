@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div>https://juejin.im/post/5c3d8956e51d4511dc72c200  浏览器运行机制参考文章</div>
+    <img src="./event_loop.png" alt="">
+</body>
+ 
+<script>
+    console.log('script start');
+
+    setTimeout(function() {
+    console.log('setTimeout');
+    }, 0);
+
+    Promise.resolve().then(function() {
+    console.log('promise1');
+    }).then(function() {
+    console.log('promise2');
+    });
+    console.log('script end');
+</script>
+
+<style>
+
+</style>
+
+</html>

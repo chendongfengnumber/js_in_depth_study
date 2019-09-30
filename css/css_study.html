@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+<head>
+    <title>study</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+   <div class="box display_style">行内样式(display的属性)</div>
+   <!--
+     display: inline 行内元素（不独占一块）
+     block  典型块
+     flex 弹性盒子
+     inherit 从父元素继承
+     inline-block
+   -->
+
+   <div class="box position_style_relative" > 
+       relative 
+       <div class="box2 position_style_absolute" > 
+            absolute 
+            <div class="box3 position_style_fixed" > 
+                    absolute 
+                    
+                </div>
+        </div>
+   </div>
+
+    <!--
+     position: static // 正常文档流
+     position: inherit 从父元素继承
+     position: relative 相对正常文档流定位     
+     position: absolute 绝对定位, 首先优先找到reletive的元素，找不到就往上一层的父元素找，知道html元素，并以此为定位
+     position: fixed 以浏览器窗口定位
+   -->
+</body>
+
+<script>
+</script>
+
+<style>
+  .box {
+    width: 300px;
+    height: 300px;
+    border: 1px solid red;
+  }
+
+  .box2 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;
+  }
+
+  .box3 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid green;
+  }
+
+  .display_style {
+    /* display: inline;  */
+    display: block;
+  }
+
+  .position_style_relative {
+    position: relative;
+    top: 2px;
+  }
+  .position_style_absolute {
+    position: absolute;
+    top: 0px; 
+  }
+  .position_style_fixed {
+    position: fixed;
+    top: 0px; 
+  }
+</style>
+
+</html>

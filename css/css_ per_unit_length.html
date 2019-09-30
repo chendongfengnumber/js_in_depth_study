@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+  <div>https://www.nowcoder.com/discuss/224234?type=2（问题地址）</div> 
+  <div class="rem_style">rem为单位</div>
+  <!--
+    以根元素fontSize大小作为1rem
+  -->
+  <div class="em_style_father">
+      em为单位
+        <div class="em_style">
+          em为单位(son)    
+        </div>
+  </div>
+  <!--
+    父元素fontSize大小作为1em 5*10 =50px(注意这里默认的字体大小为12px，所以父元素小于12，默认为12px)
+    10rem === 12*10 === 120px
+  -->
+
+  <div class="vh_or_vw_style">
+      vh/vw为单位
+  </div>
+
+  <div class="vmin_or_vmax_style">
+        vmin/vmax为单位
+    </div>
+</body>
+
+<script>
+  const rootRem = document.querySelector('body').style.fontSize = '10px'; 
+  console.log('1rem为', rootRem);
+  // 10rem === 10px* 10 == 100px
+
+  const viewPortWidth = window.innerWidth;
+  const viewPortHeight = window.innerHeight;
+
+   // 1vh  viewPortHeight* 1/100
+   // 1vw  viewPortWidth* 1/100
+
+   // 1vmin === (viewPortWidth > viewPortHeight ? viewPortHeight : viewPortWidth)* 1/100
+   // 1vmax === (viewPortWidth > viewPortHeight ? viewPortWidth : viewPortHeight)* 1/100
+</script>
+
+<style>
+  .rem_style {
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid red;
+  }
+  .em_style_father {
+    font-size: 5px;
+  }
+  .em_style {
+    width: 10em;
+    height: 10em;
+    border: 1px solid blue;
+  }
+  .vh_or_vw_style {
+    width: 50vw;
+    height: 50vw;
+    border: 1px solid green;
+  }
+
+  .vmin_or_vmax_style {
+    width: 50vmin;
+    height: 50vmax;
+    border: 1px solid purple;
+  }
+</style>
+
+</html>

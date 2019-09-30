@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+<head>
+    <title>post实验</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id='box' style="width: 100px;height: 100px;background: blue;"></div>
+    <button id="color">changeColor</button>
+    <div>
+        <iframe src="b.html"></iframe>
+    </div>
+   
+</body>
+
+<script type="text/javascript">
+    var btn = document.getElementById('color');
+    btn.onclick = function(){
+        window.frames[0].postMessage('give me the color','*');
+        console.log('hhh', window.frames.postMessage)
+    }
+    window.addEventListener('message', function(event){
+        var box = document.getElementById('box');
+        box.style.backgroundColor = event.data;
+    })
+</script>
+
+</html>
